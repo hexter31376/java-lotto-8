@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class Lottos {
         if (lottoList == null || lottoList.isEmpty()) {
             throw new IllegalArgumentException("로또 목록은 비어 있을 수 없습니다.");
         }
-        if (lottoList.stream().anyMatch(lotto -> lotto == null)) {
+        if (lottoList.stream().anyMatch(Objects::isNull)) {
             throw new IllegalArgumentException("로또 목록에 null이 포함될 수 없습니다.");
         }
         Set<List<Integer>> unique = lottoList.stream()
